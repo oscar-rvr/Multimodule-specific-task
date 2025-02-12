@@ -33,8 +33,6 @@ public class RandomFieldComparator<T> implements Comparator<T> {
         this.targetType = requireNonNull(targetType);
         this.fieldToCompare = chooseFieldToCompare(targetType);
     }
-
-
     /**
      * Compares two objects of the class T by the value of the field that was randomly chosen. It allows null values
      * for the fields, and it treats null value greater than a non-null value.
@@ -79,8 +77,7 @@ public class RandomFieldComparator<T> implements Comparator<T> {
 
     @SneakyThrows
     @SuppressWarnings("unchecked")
-    private <U extends Comparable<? super U>> int compareFieldValues(T o1, T o2)
-    {
+    private <U extends Comparable<? super U>> int compareFieldValues(T o1, T o2) {
         fieldToCompare.setAccessible(true);
         var value1 = (U) fieldToCompare.get(o1);
         var value2 = (U) fieldToCompare.get(o2);
